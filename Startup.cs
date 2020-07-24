@@ -40,7 +40,7 @@ namespace SistemaVenda
             services.AddHttpContextAccessor();
             services.AddSession();
 
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            ////services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         
