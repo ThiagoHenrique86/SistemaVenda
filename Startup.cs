@@ -34,13 +34,13 @@ namespace SistemaVenda
             options.UseSqlServer(Configuration.GetConnectionString("MyStock")));
 
             //Padrão de projeto Singleton (Design Patterns) basicamente irá conter apenas umas instância, ou seja, não vai criar mais de uma instância quando não precisa mudar
-            //Não é muito indicado usar, pois cria uma unica sessão 
+            //Não é muito indicado usar, pois cria uma unica sessão, assim se outro usuário se logasse iria replicar o nome do usuário na aplicação que esto usando
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             services.AddHttpContextAccessor();
             services.AddSession();
 
-            ////services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         
