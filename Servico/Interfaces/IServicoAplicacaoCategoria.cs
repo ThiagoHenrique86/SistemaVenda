@@ -10,5 +10,6 @@ namespace Aplicacao.Servico.Interfaces
     {
         IEnumerable<CategoriaViewModel> Listagem();
 
+        CategoriaViewModel CarregarRegistro(int codigoCategoria);
     }
 }

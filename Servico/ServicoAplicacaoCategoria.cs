@@ -18,6 +18,21 @@ namespace Aplicacao.Servico
             ServicoCategoria = servicoCategoria;
         }
 
+        public CategoriaViewModel CarregarRegistro(int codigoCategoria)
+        {
+            var registro = ServicoCategoria.CarregarRegistro(codigoCategoria);
+
+            //aqui é possivel fazer com o AutoMapper
+            CategoriaViewModel categoria = new CategoriaViewModel()
+            {
+                Codigo = registro.Codigo,
+                Descricao = registro.Descricao
+            };
+            ////
+           
+            return categoria;
+        }
+
         public IEnumerable<CategoriaViewModel> Listagem()
         {
             var lista = ServicoCategoria.Listagem();
