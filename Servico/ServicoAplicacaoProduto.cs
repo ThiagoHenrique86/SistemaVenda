@@ -71,7 +71,8 @@ namespace Aplicacao.Servico
                     Descricao = item.Descricao,
                     Quantidade = item.Quantidade,
                     Valor = (decimal)item.Valor,
-                    CodigoCategoria = (int)item.CodigoCategoria
+                    CodigoCategoria = (int)item.CodigoCategoria,
+                    DescricaoCategoria = item.Categoria.Descricao
                 };
 
                 listaProduto.Add(produto);
