@@ -16,8 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Repositorio.Contexto;
 using Repositorio.Entidades;
-using SistemaVenda.DAL;
 
 
 namespace SistemaVenda
@@ -36,14 +36,8 @@ namespace SistemaVenda
         {
             services.AddControllersWithViews();
             
-
-            //TODO: Fica por enquanto, pois o projeto ainda não foi completamente migrado para o padrão DDD
-            services.AddDbContext<ApplicationDbContext>(options => 
-            options.UseSqlServer(Configuration.GetConnectionString("MyStock")));
-
-            //A principio será definitiva
-            services.AddDbContext<Repositorio.Contexto.ApplicationDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("MyStock")));
+            services.AddDbContext<ApplicationDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MyStock")).EnableSensitiveDataLogging());
 
 
             //Padrão de projeto Singleton (Design Patterns) basicamente irá conter apenas umas instância, ou seja, não vai criar mais de uma instância quando não precisa mudar
@@ -59,18 +53,23 @@ namespace SistemaVenda
             services.AddScoped<IServicoAplicacaoCliente, ServicoAplicacaoCliente>();
             services.AddScoped<IServicoAplicacaoProduto, ServicoAplicacaoProduto>();
             services.AddScoped<IServicoAplicacaoVenda, ServicoAplicacaoVenda>();
+            services.AddScoped<IServicoAplicacaoUsuario, ServicoAplicacaoUsuario>();
 
             //Domínio
             services.AddScoped<IServicoCategoria, ServicoCategoria>();
             services.AddScoped<IServicoCliente, ServicoCliente>();
             services.AddScoped<IServicoProduto, ServicoProduto>();
             services.AddScoped<IServicoVenda, ServicoVenda>();
+            services.AddScoped<IServicoUsuario, ServicoUsuario>();
 
             //Repositorio
             services.AddScoped<IRepositorioCategoria, RepositorioCategoria>();
             services.AddScoped<IRepositorioCliente, RepositorioCliente>();
             services.AddScoped<IRepositorioProduto, RepositorioProduto>();
             services.AddScoped<IRepositorioVenda, RepositorioVenda>();
+            services.AddScoped<IRepositorioVendaProdutos, RepositorioVendaProdutos>();
+            services.AddScoped<IRepositorioUsuario, RepositorioUsuario>();
+
 
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }

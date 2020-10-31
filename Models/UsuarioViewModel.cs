@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SistemaVenda.Entidades
+namespace SistemaVenda.Models
 {
-    public class Usuario
+    public class UsuarioViewModel
     {
-        [Key]
         public int? Codigo { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
+
+        [Required(ErrorMessage = "Informe a Descrição da Usuario!")]
+        public string Descricao { get; set; }
     }
 }
